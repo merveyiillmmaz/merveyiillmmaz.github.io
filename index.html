@@ -1,1581 +1,541 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css"
-      rel="stylesheet"
-    />
-
+<html lang="tr">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anasayfa</title>
-    <link
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link href="styles.css" rel="stylesheet" />
+    <title>Anasayfa - Sanraf Raf Sistemleri</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="frontend/images/favicon.ico" type="image/x-icon" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
     <style>
       html {
         scroll-behavior: smooth;
       }
+
       body {
-        background-color: white;
-        margin: 0;
-        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+      }
+
+      h1, h2, h3, h4, h5, h6, .navbar-nav .nav-link, .carousel-item-header {
+        font-family: 'Montserrat', sans-serif;
+        color: #651111;
       }
 
       .navbar {
-        background-color: #f5f5f5;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .navbar-nav .nav-link {
-        font-family: "Montserrat", sans-serif;
-        color: #651111 !important;
-        font-size: 22px;
-      }
-
-      .navbar-brand:hover,
-      .navbar-nav .nav-link:hover {
-        color: #000000 !important;
-      }
-
-      .image-container {
-        text-align: center;
-        margin: 10px 0;
-      }
-
-      .header-image {
-        width: 80%;
-        max-width: 2500px;
-        height: 635px;
-        border-radius: 5px;
-        object-fit: cover;
-      }
-
-      /* Content alanını ana yapıya dahil etmek için düzenledim */
-      .content-container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-wrap: wrap; /* Mobil uyum için */
-        gap: 40px; /* Liste ve fotoğraf arası boşluk */
-        margin-top: 40px;
-        padding: 0 20px;
-        font-family: "Montserrat", sans-serif;
-      }
-
-      .container2 {
-        background-color: #f5f5f5;
-        color: black;
-        max-width: 600px; /* Ürün listesi alanı */
-        width: 100%;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        line-height: 1.6;
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-
-      .container2:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-      }
-
-      .container2 ul {
-        list-style-type: disc;
-        padding-left: 10px;
-        margin-bottom: 10px;
-        align-items: flex-start;
-      }
-
-      .container2 ul li {
-        margin-bottom: 10px;
-        font-size: 1rem;
-        color: black;
-      }
-
-      .shop-photo-container {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-      }
-
-      .shop-photo-container img {
-        height: 200px;
-        width: 200px;
-        object-fit: cover;
-        border-radius: 12px;
-        border: 3px solid #ddd;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        margin-right: 40px;
-        align-items: center;
-      }
-
-      .shop-photo-container img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      }
-
-      /* Mobil uyum */
-      @media screen and (max-width: 768px) {
-        .content-container {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .container2,
-        .shop-photo-container {
-          width: 100%;
-          text-align: center;
-        }
-
-        .shop-photo-container img {
-          height: 150px;
-          width: 150px;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .content-container {
-          padding: 0 10px;
-        }
-
-        .container2 {
-          padding: 20px;
-        }
-      }
-
-      #myCarousel,
-      #myCarousel2 {
-        background-color: #f5f5f5;
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      h1 {
-        text-align: center;
-        color: #651111;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-family: "Montserrat", sans-serif;
-      }
-
-      .carousel-item img {
-        width: 100%;
-        height: auto;
-        max-height: 500px;
-        object-fit: contain;
-      }
-
-      .carousel-container {
-        background-color: #f5f5f5;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-      }
-
-      .carousel-item-container {
-        flex: 1 1 calc(50% - 20px);
-        margin-bottom: 20px;
-      }
-
-      .featured-products {
-        flex: 1; /* geniş alanı kaplar */
-        background-color: #f5f5f5;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        color: #651111;
-      }
-
-      .featured-products h2 {
-        font-size: 1.8rem;
-        font-weight: 600;
-        margin-bottom: 20px;
-        text-align: left;
-      }
-
-      .product-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .product {
-        flex: 1 1 150px; /* esnek yapı */
-        background-color: #f5f5f5;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        text-align: center;
-        padding: 10px;
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-
-      .product:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      }
-
-      .product img {
-        width: 100%;
-        max-width: 150px;
-        height: auto;
-        margin-bottom: 10px;
-      }
-
-      .product p {
-        margin: 0;
-        font-size: 1rem;
-        color: #34495e;
-        font-weight: 500;
-      }
-
-      @media (max-width: 768px) {
-        .contact-products-container {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .featured-products {
-          width: 100%;
-        }
-
-        .contact-container {
-          width: 100%;
-        }
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.3s ease;
       }
 
       .navbar-brand img.logo {
-        height: 120px;
-        width: auto;
+        height: 80px; /* Daha modern bir boyut */
         transition: transform 0.3s ease;
       }
 
       .navbar-brand img.logo:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
+      }
+      
+      .nav-link {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #651111 !important;
+      }
+      
+      .nav-link:hover {
+          color: #000000 !important;
       }
 
-      .map-container {
-        text-align: center;
-        margin: 20px 0;
-        padding: 0 20px;
+      .section-padding {
+        padding: 80px 0;
+      }
+      
+      .section-bg {
+          background-color: #ffffff;
       }
 
-      .map-container iframe {
-        width: 100%;
-        max-width: 1200px;
-        height: 400px;
+      .card-custom {
         border: none;
-        border-radius: 10px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card-custom:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      }
+      
+      .product-card img {
+          border-radius: 8px;
+      }
+
+      .contact-info .info-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 1.1rem;
+      }
+      
+      .contact-info .info-item i {
+        font-size: 1.5rem;
+        color: #651111;
+        width: 30px;
+        text-align: center;
+      }
+
+      .carousel-item-container {
+        margin-bottom: 2rem;
+      }
+      
+      .carousel-item-header {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background-color: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(5px);
+          color: #651111;
+          font-size: 1.2rem;
+          font-weight: 700;
+          text-align: center;
+          padding: 10px 0;
+          z-index: 2;
+          border-bottom: 1px solid #eee;
+      }
+
+      .carousel-item img {
+          width: 100%;
+          height: 450px; /* Sabit yükseklik */
+          object-fit: contain; /* Görüntünün bozulmasını önler */
+          background-color: #f5f5f5;
+          border-radius: 8px;
       }
 
       footer {
-        background-color: #f5f5f5;
-        color: #34495e;
-        padding: 20px 0;
-        text-align: center;
-        margin-top: 20px;
+        background-color: #343a40;
+        color: #f8f9fa;
       }
-
-      .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      .footer-address {
-        flex: 1;
-        text-align: left;
-        font-family: "Montserrat", sans-serif;
-        font-size: 1rem;
-      }
-
+      
       .footer-logo img {
-        max-width: 150px;
-        height: auto;
+        max-width: 120px;
+        filter: grayscale(100%) brightness(3); /* Logoyu beyaz yapar */
       }
-
+      
       .whatsapp-button {
         position: fixed;
         bottom: 20px;
         left: 20px;
-        z-index: 100;
+        z-index: 1000;
       }
 
       .whatsapp-button img {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
+        transition: transform 0.3s ease;
       }
-
-      @media (max-width: 768px) {
-        .content-container {
-          flex-direction: column;
-        }
-
-        .featured-products .product-list {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .featured-products .product {
-          flex: none;
-          width: 100%;
-          max-width: 300px;
-        }
-      }
-
-      .contact-container {
-        position: absolute; /* Sol tarafa sabitler */
-        top: 150px; /* Üst boşluk, ayarlayabilirsin */
-        left: 20px; /* Sol boşluk, ayarlayabilirsin */
-        width: 260px; /* Çok yer kaplamasın diye sabit genişlik */
-        background-color: #f5f5f5; /* Mat açık gri */
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        font-family: "Montserrat", sans-serif;
-        color: #2c3e50;
-      }
-
-      .contact-container h1 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: #2c3e50;
-        text-align: left; /* Başlık sola hizalı */
-      }
-
-      .contact-info {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .info-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .info-item img {
-        width: 24px;
-        height: 24px;
-        object-fit: contain;
-      }
-
-      .info-item p {
-        margin: 0;
-        font-size: 1rem;
-        color: #34495e; /* Mat koyu gri */
-      }
-
-      @media (max-width: 768px) {
-        .contact-container {
-          position: static;
-          width: 100%;
-          margin: 20px 0;
-        }
-      }
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f5f5f5;
-        color: #333;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
-      }
-
-      .carousel-container {
-        background-color: #f5f5f5;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 20px;
-      }
-
-      /* Carousel item container: her bir carousel'in kapsayıcısı */
-      .carousel-item-container {
-        flex: 1 1 calc(50% - 20px);
-        margin-bottom: 20px;
-      }
-
-      /* Carousel item: Bootstrap carousel yapısına ek olarak başlık alanı ekledik */
-      .carousel-item {
-        position: relative;
-      }
-
-      /* Slide başlık alanı */
-      .carousel-item-header {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(245, 245, 245, 0.9);
-        color: #34495e;
-        font-size: 18px;
-        font-weight: 600;
-        text-align: center;
-        padding: 10px 0;
-        z-index: 2;
-      }
-
-      /* Carousel içindeki resimler */
-      .carousel-item img {
-        width: 100%;
-        height: auto;
-        max-height: 500px;
-        object-fit: contain;
-        display: block;
-      }
-
-      /* Carousel kontrol butonları (Bootstrap tarafından sağlanıyor) */
-      .carousel-control-prev,
-      .carousel-control-next {
-        opacity: 0.8;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .carousel-item-container {
-          flex: 1 1 100%;
-        }
-      }
-      /* Responsive */
-      @media (max-width: 1200px) {
-        .carousel-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-
-      @media (max-width: 768px) {
-        .carousel-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .carousel-item img {
-          height: 160px;
-        }
-
-        .carousel-title {
-          font-size: 24px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .carousel-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .carousel-item img {
-          height: 150px;
-        }
+      
+      .whatsapp-button img:hover {
+          transform: scale(1.1);
       }
     </style>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="#">
-        <img src="f5logo.jfif" alt="SANRAF Logo" class="logo" />
-      </a>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#anasayfa">Anasayfa</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#iletisim">İletişim</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#urunlerimiz">Ürünlerimiz</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#hakkinda">Hakkında</a>
-          </li>
-        </ul>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="frontend/images/analogo.png" alt="SANRAF Logo" class="logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#anasayfa">Anasayfa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#hakkinda">Hakkında</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#urunlerimiz">Ürünlerimiz</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#iletisim">İletişim</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
 
-    <div class="content-container">
-      <div class="container2">
-        <p>
-          Sanraf olarak tüm Hatay’a hizmet vermekteyiz. Antakya, İskenderun,
-          Reyhanlı, Altınözü, Kırıkhan, Samandağ, Arsuz ve diğer tüm ilçelere
-          hizmetimiz mevcuttur.
-        </p>
-        <div class="shop-photo-container">
-          <img src="dukkan.jfif" alt="Dükkan Fotoğrafı" />
-
-          <ul>
-            <p><strong>ÜRÜNLERİMİZ:</strong></p>
-            <li>Market rafları</li>
-            <li>Depo rafları</li>
-            <li>Vidalı (çelik) raflar</li>
-            <li>Duvara monte ekonomik raflar</li>
-            <li>Duvara monte ahşap raf</li>
-            <li>Giyim raf ve askılıkları</li>
-            <li>Mankenler</li>
-            <li>Giyim mağazası orta stantlar</li>
-            <li>Sepet çeşitleri</li>
-            <li>Tel stantlar</li>
-          </ul>
+    <!-- Hero Section -->
+    <header id="anasayfa" class="section-padding">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold">Mağaza ve Depo Raf Sistemlerinde Profesyonel Çözümler</h1>
+                    <p class="lead my-4">Sanraf olarak, 2014'ten beri tüm Hatay'a market, depo, giyim ve özel tasarım raf sistemleri ile hizmet veriyoruz. Kalite ve müşteri memnuniyeti bizim için önceliktir.</p>
+                    <a href="#urunlerimiz" class="btn btn-danger btn-lg">Ürünleri Keşfet</a>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="frontend/images/onecıkan1.png" alt="Modern raf sistemleri" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
         </div>
-        <p>
-          Ürünlerimizin görsellerine ürünlerimiz sayfasına tıklayarak veya aşağı
-          kaydırarak ulaşabilirsiniz. Dilerseniz satın aldığınız ürünlerinizin
-          montajı da yapılmaktadır. Bizi tercih ettiğiniz için teşekkür ederiz!
-        </p>
-      </div>
+    </header>
 
-      <div class="featured-products">
-        <h2>Öne Çıkan Ürünlerimiz</h2>
-        <div class="product-list">
-          <div class="product">
-            <img src="onecıkan1.png" alt="Market Rafları" />
-            <p>Market rafları</p>
-          </div>
-          <div class="product">
-            <img src="onecıkan2.png" alt="Mini Depo Rafları" />
-            <p>Mini Depo Rafları</p>
-          </div>
-          <div class="product">
-            <img src="onecıkan3.png" alt="Giyim Rafları" />
-            <p>Giyim rafları</p>
-          </div>
+    <!-- About Section -->
+    <section id="hakkinda" class="section-padding section-bg">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7" data-aos="fade-up">
+                    <div class="card card-custom p-4">
+                        <div class="card-body">
+                             <h2 class="card-title mb-4">Firmamız Hakkında</h2>
+                             <p>Sanraf, 2014 yılında Antakya’da kurulmuş bir firmadır. Hatay genelinde mağaza aksesuarları ve raf sistemleri konusunda geniş bir hizmet yelpazesi sunmaktadır.</p>
+                             <p>Portatif raf sistemleri, çelik raflar ve mağaza ekipmanlarıyla sektöründe tanınan bir isim olmanın yanı sıra, müşterilerine satın aldıkları ürünlerin dilerlerse montaj hizmetini de sunmaktadır.</p>
+                             <p class="mb-0">Kalite ve müşteri memnuniyeti odaklı hizmet anlayışımızla, sektördeki en iyi hizmeti sunmayı amaçlıyoruz.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5" data-aos="fade-up" data-aos-delay="200">
+                     <div class="card card-custom p-4">
+                        <div class="card-body">
+                           <h3 class="mb-3">Sunduğumuz Ürünler</h3>
+                           <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Market ve Depo Rafları</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Vidalı (Çelik) Raflar</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Duvara Monte Raf Sistemleri</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Giyim Mağazası Stantları</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Manken ve Aksesuarlar</li>
+                                <li class="mb-0"><i class="fas fa-check-circle text-success me-2"></i>Sepet ve Tel Stant Çeşitleri</li>
+                           </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <section id="iletisim">
-      <div class="container">
-        <h1>Bizimle İletişime Geçin</h1>
-        <div class="contact-info">
-          <div class="info-item">
-            <img src="phone.jpg" alt="Phone Icon" />
-            <p>+90 536 398 48 58</p>
-          </div>
-          <div class="info-item">
-            <img src="inta.png" alt="Instagram Icon" />
-            <p>@sanraf_rafsistemleri</p>
-          </div>
-          <div class="info-item">
-            <img src="mail.jpg" alt="Email Icon" />
-            <p>sanraf31@gmail.com</p>
-          </div>
-          <div class="info-item">
-            <img src="image.png" alt="Address Icon" />
-            <p>
-              Dumlupınar Mahallesi Ulucami Caddesi No:128/1 (Eski SSK Hastanesi
-              acil civarı) İskenderun-Hatay
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="urunlerimiz">
-      <div class="container">
-        <h1>Ürünlerimiz</h1>
-        <div class="carousel-container">
-          <!-- 1. Carousel -->
-          <div class="carousel-item-container">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#myCarousel"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-                <li data-target="#myCarousel" data-slide-to="3"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="carousel-item-header">Market Rafları</div>
-                  <a
-                    href="market1.png"
-                    data-lightbox="carousel-gallery"
-                    data-title="Market Rafları 1"
-                  >
-                    <img
-                      src="market1.png"
-                      class="d-block w-100"
-                      alt="Slide 1"
-                    />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Market Rafları</div>
-                  <a
-                    href="market2.png"
-                    data-lightbox="carousel-gallery"
-                    data-title="Market Rafları 2"
-                  >
-                    <img
-                      src="market2.png"
-                      class="d-block w-100"
-                      alt="Slide 2"
-                    />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Market Rafları</div>
-                  <a
-                    href="market3.png"
-                    data-lightbox="carousel-gallery"
-                    data-title="Market Rafları 3"
-                  >
-                    <img
-                      src="market3.png"
-                      class="d-block w-100"
-                      alt="Slide 3"
-                    />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Market Rafları</div>
-                  <a
-                    href="market4.png"
-                    data-lightbox="carousel-gallery"
-                    data-title="Market Rafları 4"
-                  >
-                    <img
-                      src="market4.png"
-                      class="d-block w-100"
-                      alt="Slide 4"
-                    />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Market Rafları</div>
-                  <a
-                    href="magaza5.jfif"
-                    data-lightbox="carousel-gallery"
-                    data-title="Market Rafları 5"
-                  >
-                    <img
-                      src="magaza5.jfif"
-                      class="d-block w-100"
-                      alt="Slide 5"
-                    />
-                  </a>
-                </div>
-              </div>
-
-              <a
-                class="carousel-control-prev"
-                href="#myCarousel"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Geri</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#myCarousel"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">İleri</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- 2. Carousel -->
-          <div class="carousel-item-container">
-            <div id="myCarousel2" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#myCarousel2"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#myCarousel2" data-slide-to="1"></li>
-                <li data-target="#myCarousel2" data-slide-to="2"></li>
-                <li data-target="#myCarousel2" data-slide-to="3"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="carousel-item-header">Depo Rafları</div>
-                  <a
-                    href="depo1.png"
-                    data-lightbox="depo-gallery"
-                    data-title="Depo Rafları 1"
-                  >
-                    <img src="depo1.png" class="d-block w-100" alt="Slide 1" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Depo Rafları</div>
-                  <a
-                    href="depo2.png"
-                    data-lightbox="depo-gallery"
-                    data-title="Depo Rafları 2"
-                  >
-                    <img src="depo2.png" class="d-block w-100" alt="Slide 2" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Depo Rafları</div>
-                  <a
-                    href="depo3.png"
-                    data-lightbox="depo-gallery"
-                    data-title="Depo Rafları 3"
-                  >
-                    <img src="depo3.png" class="d-block w-100" alt="Slide 3" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Depo Rafları</div>
-                  <a
-                    href="depo4.png"
-                    data-lightbox="depo-gallery"
-                    data-title="Depo Rafları 4"
-                  >
-                    <img src="depo4.png" class="d-block w-100" alt="Slide 4" />
-                  </a>
-                </div>
-              </div>
-
-              <a
-                class="carousel-control-prev"
-                href="#myCarousel2"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Geri</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#myCarousel2"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">İleri</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- 3. Carousel -->
-          <div class="carousel-item-container">
-            <div id="myCarousel3" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#myCarousel3"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#myCarousel3" data-slide-to="1"></li>
-                <li data-target="#myCarousel3" data-slide-to="2"></li>
-                <li data-target="#myCarousel3" data-slide-to="3"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="carousel-item-header">Çelik Raflar</div>
-                  <a
-                    href="celik1.png"
-                    data-lightbox="celik-gallery"
-                    data-title="Çelik Raflar 1"
-                  >
-                    <img src="celik1.png" class="d-block w-100" alt="Slide 1" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Çelik Raflar</div>
-                  <a
-                    href="celik2.png"
-                    data-lightbox="celik-gallery"
-                    data-title="Çelik Raflar 2"
-                  >
-                    <img src="celik2.png" class="d-block w-100" alt="Slide 2" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Çelik Raflar</div>
-                  <a
-                    href="celik3.png"
-                    data-lightbox="celik-gallery"
-                    data-title="Çelik Raflar 3"
-                  >
-                    <img src="celik3.png" class="d-block w-100" alt="Slide 3" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Çelik Raflar</div>
-                  <a
-                    href="celik4.png"
-                    data-lightbox="celik-gallery"
-                    data-title="Çelik Raflar 4"
-                  >
-                    <img src="celik4.png" class="d-block w-100" alt="Slide 4" />
-                  </a>
-                </div>
-              </div>
-
-              <a
-                class="carousel-control-prev"
-                href="#myCarousel3"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Geri</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#myCarousel3"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">İleri</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- 4. Carousel -->
-          <div class="carousel-item-container">
-            <div id="myCarousel4" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#myCarousel4"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#myCarousel4" data-slide-to="1"></li>
-                <li data-target="#myCarousel4" data-slide-to="2"></li>
-                <li data-target="#myCarousel4" data-slide-to="3"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="carousel-item-header">
-                    Duvara Monte Ekonomik Raflar
-                  </div>
-                  <a
-                    href="eko1.png"
-                    data-lightbox="eko-gallery"
-                    data-title="Duvara Monte Ekonomik Raf 1"
-                  >
-                    <img src="eko1.png" class="d-block w-100" alt="Slide 1" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">
-                    Duvara Monte Ekonomik Raflar
-                  </div>
-                  <a
-                    href="eko2.png"
-                    data-lightbox="eko-gallery"
-                    data-title="Duvara Monte Ekonomik Raf 2"
-                  >
-                    <img src="eko2.png" class="d-block w-100" alt="Slide 2" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">
-                    Duvara Monte Ekonomik Raflar
-                  </div>
-                  <a
-                    href="eko3.png"
-                    data-lightbox="eko-gallery"
-                    data-title="Duvara Monte Ekonomik Raf 3"
-                  >
-                    <img src="eko3.png" class="d-block w-100" alt="Slide 3" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">
-                    Duvara Monte Ekonomik Raflar
-                  </div>
-                  <a
-                    href="eko4.png"
-                    data-lightbox="eko-gallery"
-                    data-title="Duvara Monte Ekonomik Raf 4"
-                  >
-                    <img src="eko4.png" class="d-block w-100" alt="Slide 4" />
-                  </a>
-                </div>
-              </div>
-
-              <a
-                class="carousel-control-prev"
-                href="#myCarousel4"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Geri</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#myCarousel4"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">İleri</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- 5. Carousel -->
-          <div class="carousel-item-container">
-            <div id="myCarousel5" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#myCarousel5"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#myCarousel5" data-slide-to="1"></li>
-                <li data-target="#myCarousel5" data-slide-to="2"></li>
-                <li data-target="#myCarousel5" data-slide-to="3"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="carousel-item-header">Ahşap Raflar</div>
-                  <a
-                    href="ahsap1.png"
-                    data-lightbox="ahsap-gallery"
-                    data-title="Ahşap Raf 1"
-                  >
-                    <img src="ahsap1.png" class="d-block w-100" alt="Slide 1" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Ahşap Raflar</div>
-                  <a
-                    href="ahsap2.png"
-                    data-lightbox="ahsap-gallery"
-                    data-title="Ahşap Raf 2"
-                  >
-                    <img src="ahsap2.png" class="d-block w-100" alt="Slide 2" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Ahşap Raflar</div>
-                  <a
-                    href="ahsap3.png"
-                    data-lightbox="ahsap-gallery"
-                    data-title="Ahşap Raf 3"
-                  >
-                    <img src="ahsap3.png" class="d-block w-100" alt="Slide 3" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Ahşap Raflar</div>
-                  <a
-                    href="ahsap4.png"
-                    data-lightbox="ahsap-gallery"
-                    data-title="Ahşap Raf 4"
-                  >
-                    <img src="ahsap4.png" class="d-block w-100" alt="Slide 4" />
-                  </a>
-                </div>
-              </div>
-
-              <a
-                class="carousel-control-prev"
-                href="#myCarousel5"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Geri</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#myCarousel5"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">İleri</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- 6. Carousel -->
-          <div class="carousel-item-container">
-            <div id="myCarousel6" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#myCarousel6"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#myCarousel6" data-slide-to="1"></li>
-                <li data-target="#myCarousel6" data-slide-to="2"></li>
-                <li data-target="#myCarousel6" data-slide-to="3"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="carousel-item-header">Giyim Rafları</div>
-                  <a
-                    href="giyim1.png"
-                    data-lightbox="giyim-gallery"
-                    data-title="Giyim Rafı 1"
-                  >
-                    <img src="giyim1.png" class="d-block w-100" alt="Slide 1" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Giyim Rafları</div>
-                  <a
-                    href="giyim2.png"
-                    data-lightbox="giyim-gallery"
-                    data-title="Giyim Rafı 2"
-                  >
-                    <img src="giyim2.png" class="d-block w-100" alt="Slide 2" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Giyim Rafları</div>
-                  <a
-                    href="giyim3.png"
-                    data-lightbox="giyim-gallery"
-                    data-title="Giyim Rafı 3"
-                  >
-                    <img src="giyim3.png" class="d-block w-100" alt="Slide 3" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Giyim Rafları</div>
-                  <a
-                    href="giyim4.png"
-                    data-lightbox="giyim-gallery"
-                    data-title="Giyim Rafı 4"
-                  >
-                    <img src="giyim4.png" class="d-block w-100" alt="Slide 4" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Giyim Rafları</div>
-                  <a
-                    href="giyim5.jfif"
-                    data-lightbox="giyim-gallery"
-                    data-title="Giyim Rafı 5"
-                  >
-                    <img
-                      src="giyim5.jfif"
-                      class="d-block w-100"
-                      alt="Slide 5"
-                    />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Giyim Rafları</div>
-                  <a
-                    href="giyim6.jfif"
-                    data-lightbox="giyim-gallery"
-                    data-title="Giyim Rafı 6"
-                  >
-                    <img
-                      src="giyim6.jfif"
-                      class="d-block w-100"
-                      alt="Slide 6"
-                    />
-                  </a>
-                </div>
-              </div>
-
-              <a
-                class="carousel-control-prev"
-                href="#myCarousel6"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Geri</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#myCarousel6"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">İleri</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- 7. Carousel -->
-          <div class="carousel-item-container">
-            <div id="myCarousel7" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#myCarousel7"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#myCarousel7" data-slide-to="1"></li>
-                <li data-target="#myCarousel7" data-slide-to="2"></li>
-                <li data-target="#myCarousel7" data-slide-to="3"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="carousel-item-header">Mankenler</div>
-                  <a
-                    href="manken1.png"
-                    data-lightbox="manken-gallery"
-                    data-title="Manken 1"
-                  >
-                    <img
-                      src="manken1.png"
-                      class="d-block w-100"
-                      alt="Slide 1"
-                    />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Mankenler</div>
-                  <a
-                    href="manken2.png"
-                    data-lightbox="manken-gallery"
-                    data-title="Manken 2"
-                  >
-                    <img
-                      src="manken2.png"
-                      class="d-block w-100"
-                      alt="Slide 2"
-                    />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Mankenler</div>
-                  <a
-                    href="manken3.png"
-                    data-lightbox="manken-gallery"
-                    data-title="Manken 3"
-                  >
-                    <img
-                      src="manken3.png"
-                      class="d-block w-100"
-                      alt="Slide 3"
-                    />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Mankenler</div>
-                  <a
-                    href="manken4.png"
-                    data-lightbox="manken-gallery"
-                    data-title="Manken 4"
-                  >
-                    <img
-                      src="manken4.png"
-                      class="d-block w-100"
-                      alt="Slide 4"
-                    />
-                  </a>
-                </div>
-              </div>
-
-              <a
-                class="carousel-control-prev"
-                href="#myCarousel7"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Geri</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#myCarousel7"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">İleri</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- 8. Carousel -->
-          <div class="carousel-item-container">
-            <div id="myCarousel8" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#myCarousel8"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#myCarousel8" data-slide-to="1"></li>
-                <li data-target="#myCarousel8" data-slide-to="2"></li>
-                <li data-target="#myCarousel8" data-slide-to="3"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="carousel-item-header">Orta Stantlar</div>
-                  <a
-                    href="orta1.png"
-                    data-lightbox="orta-gallery"
-                    data-title="Orta Stant 1"
-                  >
-                    <img src="orta1.png" class="d-block w-100" alt="Slide 1" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Orta Stantlar</div>
-                  <a
-                    href="orta2.png"
-                    data-lightbox="orta-gallery"
-                    data-title="Orta Stant 2"
-                  >
-                    <img src="orta2.png" class="d-block w-100" alt="Slide 2" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Orta Stantlar</div>
-                  <a
-                    href="orta3.png"
-                    data-lightbox="orta-gallery"
-                    data-title="Orta Stant 3"
-                  >
-                    <img src="orta3.png" class="d-block w-100" alt="Slide 3" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Orta Stantlar</div>
-                  <a
-                    href="orta4.png"
-                    data-lightbox="orta-gallery"
-                    data-title="Orta Stant 4"
-                  >
-                    <img src="orta4.png" class="d-block w-100" alt="Slide 4" />
-                  </a>
-                </div>
-              </div>
-
-              <a
-                class="carousel-control-prev"
-                href="#myCarousel8"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Geri</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#myCarousel8"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">İleri</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- 9. Carousel -->
-          <div class="carousel-item-container">
-            <div id="myCarousel9" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#myCarousel9"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#myCarousel9" data-slide-to="1"></li>
-                <li data-target="#myCarousel9" data-slide-to="2"></li>
-                <li data-target="#myCarousel9" data-slide-to="3"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="carousel-item-header">Sepet Çeşitleri</div>
-                  <a
-                    href="s2.png"
-                    data-lightbox="sepet-gallery"
-                    data-title="Sepet Çeşidi 1"
-                  >
-                    <img src="s2.png" class="d-block w-100" alt="Slide 1" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Sepet Çeşitleri</div>
-                  <a
-                    href="s1.png"
-                    data-lightbox="sepet-gallery"
-                    data-title="Sepet Çeşidi 2"
-                  >
-                    <img src="s1.png" class="d-block w-100" alt="Slide 2" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Sepet Çeşitleri</div>
-                  <a
-                    href="s3.png"
-                    data-lightbox="sepet-gallery"
-                    data-title="Sepet Çeşidi 3"
-                  >
-                    <img src="s3.png" class="d-block w-100" alt="Slide 3" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Sepet Çeşitleri</div>
-                  <a
-                    href="s4.png"
-                    data-lightbox="sepet-gallery"
-                    data-title="Sepet Çeşidi 4"
-                  >
-                    <img src="s4.png" class="d-block w-100" alt="Slide 4" />
-                  </a>
-                </div>
-              </div>
-
-              <a
-                class="carousel-control-prev"
-                href="#myCarousel9"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Geri</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#myCarousel9"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">İleri</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- 10. Carousel -->
-          <div class="carousel-item-container">
-            <div id="myCarousel10" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#myCarousel10"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#myCarousel10" data-slide-to="1"></li>
-                <li data-target="#myCarousel10" data-slide-to="2"></li>
-                <li data-target="#myCarousel10" data-slide-to="3"></li>
-              </ol>
-
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="carousel-item-header">Tel Stantlar</div>
-                  <a
-                    href="tel1.png"
-                    data-lightbox="tel-gallery"
-                    data-title="Tel Stant 1"
-                  >
-                    <img src="tel1.png" class="d-block w-100" alt="Slide 1" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Tel Stantlar</div>
-                  <a
-                    href="tel2.png"
-                    data-lightbox="tel-gallery"
-                    data-title="Tel Stant 2"
-                  >
-                    <img src="tel2.png" class="d-block w-100" alt="Slide 2" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Tel Stantlar</div>
-                  <a
-                    href="tel3.png"
-                    data-lightbox="tel-gallery"
-                    data-title="Tel Stant 3"
-                  >
-                    <img src="tel3.png" class="d-block w-100" alt="Slide 3" />
-                  </a>
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-item-header">Tel Stantlar</div>
-                  <a
-                    href="tel4.png"
-                    data-lightbox="tel-gallery"
-                    data-title="Tel Stant 4"
-                  >
-                    <img src="tel4.png" class="d-block w-100" alt="Slide 4" />
-                  </a>
-                </div>
-              </div>
-
-              <a
-                class="carousel-control-prev"
-                href="#myCarousel10"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Geri</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#myCarousel10"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">İleri</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <div class="map-container">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3203.8640231743007!2d36.170405675634534!3d36.581494472310354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x152f592b87910a1d%3A0x27e2cf5e9d2937d!2sDumlup%C4%B1nar%2C%20Ulucami%20Cd.%20No%3A128%20D%3A1%2C%2031200%20%C4%B0skenderun%2FHatay!5e0!3m2!1str!2str!4v1720287107225!5m2!1str!2str"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
-    <section id="hakkinda">
-      <div class="container1">
-        <h1>Hakkında</h1>
-      </div>
-      <div class="content-container">
-        <div>
-          <p>Sanraf, 2014 yılında Antakya’da kurulmuş bir firmadır.</p>
-          <p>
-            Hatay genelinde mağaza aksesuarları ve raf sistemleri konusunda
-            geniş bir hizmet yelpazesi sunmaktadır.
-          </p>
-          <p>
-            Portatif raf sistemleri, çelik raflar ve mağaza ekipmanlarıyla
-            sektöründe tanınan bir isim olmanın yanı sıra, müşterilerine satın
-            aldıkları ürünlerin dilerlerse montaj hizmetini de sunmaktadır.
-          </p>
-          <p>
-            Kalite ve müşteri memnuniyeti odaklı hizmet anlayışımızla,
-            sektördeki en iyi hizmeti sunmayı amaçlıyoruz.
-          </p>
+    <!-- Products Section -->
+    <section id="urunlerimiz" class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h1 class="display-5 fw-bold">Ürünlerimiz</h1>
+                <p class="lead">Geniş ürün yelpazemizle her ihtiyaca yönelik çözümler sunuyoruz.</p>
+            </div>
+            <div class="row g-4">
+                <!-- Carousels will be dynamically injected here -->
+                <div class="col-lg-6 carousel-item-container" data-aos="fade-up">
+                    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators"></div><div class="carousel-inner"></div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Geri</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">İleri</span></button>
+                    </div>
+                </div>
+                <div class="col-lg-6 carousel-item-container" data-aos="fade-up" data-aos-delay="100">
+                    <div id="myCarousel2" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators"></div><div class="carousel-inner"></div>
+                         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel2" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Geri</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel2" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">İleri</span></button>
+                    </div>
+                </div>
+                <div class="col-lg-6 carousel-item-container" data-aos="fade-up">
+                    <div id="myCarousel3" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators"></div><div class="carousel-inner"></div>
+                         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel3" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Geri</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel3" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">İleri</span></button>
+                    </div>
+                </div>
+                <div class="col-lg-6 carousel-item-container" data-aos="fade-up" data-aos-delay="100">
+                    <div id="myCarousel4" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators"></div><div class="carousel-inner"></div>
+                         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel4" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Geri</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel4" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">İleri</span></button>
+                    </div>
+                </div>
+                 <div class="col-lg-6 carousel-item-container" data-aos="fade-up">
+                    <div id="myCarousel5" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators"></div><div class="carousel-inner"></div>
+                         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel5" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Geri</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel5" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">İleri</span></button>
+                    </div>
+                </div>
+                <div class="col-lg-6 carousel-item-container" data-aos="fade-up" data-aos-delay="100">
+                    <div id="myCarousel6" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators"></div><div class="carousel-inner"></div>
+                         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel6" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Geri</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel6" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">İleri</span></button>
+                    </div>
+                </div>
+                <div class="col-lg-6 carousel-item-container" data-aos="fade-up">
+                    <div id="myCarousel7" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators"></div><div class="carousel-inner"></div>
+                         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel7" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Geri</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel7" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">İleri</span></button>
+                    </div>
+                </div>
+                <div class="col-lg-6 carousel-item-container" data-aos="fade-up" data-aos-delay="100">
+                    <div id="myCarousel8" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators"></div><div class="carousel-inner"></div>
+                         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel8" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Geri</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel8" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">İleri</span></button>
+                    </div>
+                </div>
+                 <div class="col-lg-6 carousel-item-container" data-aos="fade-up">
+                    <div id="myCarousel9" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators"></div><div class="carousel-inner"></div>
+                         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel9" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Geri</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel9" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">İleri</span></button>
+                    </div>
+                </div>
+                <div class="col-lg-6 carousel-item-container" data-aos="fade-up" data-aos-delay="100">
+                    <div id="myCarousel10" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators"></div><div class="carousel-inner"></div>
+                         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel10" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Geri</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel10" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">İleri</span></button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-    <footer>
-      <div class="footer-content">
-        <div class="footer-address">
-          <p>
-            Adres: Dumlupınar Mahallesi Ulucami Caddesi No:128/1 (Eski SSK
-            Hastanesi acil civarı) İskenderun-Hatay
-          </p>
+
+    <!-- Contact & Map Section -->
+    <section id="iletisim" class="section-padding section-bg">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h1 class="display-5 fw-bold">Bizimle İletişime Geçin</h1>
+                <p class="lead">Sorularınız, talepleriniz veya siparişleriniz için bize ulaşabilirsiniz.</p>
+            </div>
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="contact-info d-flex flex-column gap-4">
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <p class="mb-0">+90 536 398 48 58</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-instagram"></i>
+                            <p class="mb-0">@sanraf_rafsistemleri</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p class="mb-0">sanraf31@gmail.com</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p class="mb-0">Dumlupınar Mahallesi Ulucami Caddesi No:128/1 (Eski SSK Hastanesi acil civarı) İskenderun-Hatay</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3203.8640231743007!2d36.170405675634534!3d36.581494472310354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x152f592b87910a1d%3A0x27e2cf5e9d2937d!2sDumlup%C4%B1nar%2C%20Ulucami%20Cd.%20No%3A128%20D%3A1%2C%2031200%20%C4%B0skenderun%2FHatay!5e0!3m2!1str!2str!4v1720287107225!5m2!1str!2str" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-3 shadow-sm"></iframe>
+                </div>
+            </div>
         </div>
-        <div class="footer-logo">
-          <img src="f5logo.jfif" alt="Şirket Logosu" />
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container text-center">
+            <div class="d-flex justify-content-center align-items-center mb-3">
+            </div>
+            <p class="mb-0">© 2025 Sanraf - Tüm hakları saklıdır.</p>
         </div>
-      </div>
-      <p>&copy; 2025 Sanraf - Tüm hakları saklıdır.</p>
     </footer>
 
+    <!-- WhatsApp Button -->
     <div class="whatsapp-button">
       <a href="https://wa.me/905363984858" target="_blank">
-        <img src="wp.png" alt="WhatsApp" />
+        <img src="frontend/images/wp.png" alt="WhatsApp" />
       </a>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox-plus-jquery.min.js"></script>
-  </body>
+    <!-- JQuery (Lightbox için gerekli) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+    <!-- Custom Scripts -->
+        <!-- JQuery (Lightbox için gerekli) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script>
+      // AOS'u başlat
+      AOS.init({
+          duration: 1000, 
+          once: true, 
+      });
+
+      // --- 1. ADIM: TÜM ÜRÜNLERİNİZİ BURAYA EKLEYİN ---
+      // 'categoryName' ile aşağıdaki 'carouselsConfig' içindeki kategori adları aynı olmalı.
+      // 'imageUrl' kısmına kendi resimlerinizin yolunu yazın.
+      const allProducts = {
+        "Market Rafları": [
+          { name: "Market Rafı - Model 1", imageUrl: "frontend/images/market1.png" },
+          { name: "Market Rafı - Model 2", imageUrl: "frontend/images/market2.png" }, // Bu resim yollarını kendi dosyalarınıza göre değiştirin
+          { name: "Market Rafı - Model 3", imageUrl: "frontend/images/market3.png" },
+          { name: "Market Rafı - Model 4", imageUrl: "frontend/images/market4.png" }
+        ],
+        "Depo Rafları": [
+          { name: "Ağır Yük Rafı", imageUrl: "frontend/images/depo1.png" },
+          { name: "Orta Yük Rafı", imageUrl: "frontend/images/depo2.png" },
+          { name: "Hafif Yük Rafı", imageUrl: "frontend/images/depo3.png" },
+          { name: "Çelik Depo Rafı", imageUrl: "frontend/images/depo4.png" },
+        ],
+        "Çelik Raflar": [
+          { name: "Klasör Rafı", imageUrl: "frontend/images/celik1.png" },
+          { name: "Arşiv Rafı", imageUrl: "frontend/images/celik2.png" },
+          { name: "Civatalı Raf", imageUrl: "frontend/images/celik3.png" },
+           { name: "Civatalı Raf", imageUrl: "frontend/images/celik4.png" }
+        ],
+        "Duvara Monte Ekonomik Raflar": [
+            { name: "Ekonomik Duvar Rafı 1", imageUrl: "frontend/images/eko1.png"},
+            { name: "Ekonomik Duvar Rafı 2", imageUrl: "frontend/images/eko2.png"},
+            { name: "Ekonomik Duvar Rafı 3", imageUrl: "frontend/images/eko3.png"},
+            { name: "Ekonomik Duvar Rafı 4", imageUrl: "frontend/images/eko4.png"}
+        ],
+        "Ahşap Raflar": [
+            { name: "Dekoratif Ahşap Raf", imageUrl: "frontend/images/ahsap1.png"},
+            { name: "Duvar Ünitesi Rafı", imageUrl: "frontend/images/ahsap2.png"},
+            { name: "Rustik Ahşap Raf", imageUrl: "frontend/images/ahsap3.png"},
+            { name: "Rustik Ahşap Raf", imageUrl: "frontend/images/ahsap4.png"}
+        ],
+        "Giyim Rafları": [
+            { name: "Konfeksiyon Askılığı", imageUrl: "frontend/images/giyim1.png"},
+            { name: "Metal Giyim Standı", imageUrl: "frontend/images/giyim2.png"},
+            { name: "Duvar Askı Sistemi", imageUrl: "frontend/images/giyim3.png"},
+            { name: "Orta Alan Standı", imageUrl: "frontend/images/giyim4.png"},
+            { name: "Giyim", imageUrl: "frontend/images/arkaplanımız.png" },
+            { name: "Orta Alan Standı", imageUrl: "frontend/images/giyim5.jfif"},
+            { name: "Orta Alan Standı", imageUrl: "frontend/images/giyim6.jfif"},
+            { name: "Orta Alan Standı", imageUrl: "frontend/images/giyim7.jfif"}
+        ],
+        "Mankenler": [
+            { name: "Tam Boy Erkek Manken", imageUrl: "frontend/images/manken1.png"},
+            { name: "Tam Boy Kadın Manken", imageUrl: "frontend/images/manken2.png"},
+            { name: "Büst Manken", imageUrl: "frontend/images/manken3.png"},
+            { name: "Büst Manken", imageUrl: "frontend/images/manken4.png"}
+        ],
+        "Orta Stantlar": [
+            { name: "Ahşap Orta Stant", imageUrl: "frontend/images/orta1.png"},
+            { name: "Camlı Orta Stant", imageUrl: "frontend/images/orta2.png"},
+            { name: "Metal Ayaklı Stant", imageUrl: "frontend/images/orta3.png"},
+            { name: "Metal Ayaklı Stant", imageUrl: "frontend/images/orta4.png"}
+        ],
+        "Sepet Çeşitleri": [
+            { name: "Market Alışveriş Sepeti", imageUrl: "frontend/images/s1.png"},
+            { name: "Teşhir Sepeti", imageUrl: "frontend/images/s2.png"},
+            { name: "Promosyon Sepeti", imageUrl: "frontend/images/s3.png"},
+            { name: "Promosyon Sepeti", imageUrl: "frontend/images/s4.png"}
+        ],
+        "Tel Stantlar": [
+            { name: "Tel Ürün Standı 1", imageUrl: "frontend/images/tel1.png"},
+            { name: "Tel Ürün Standı 2", imageUrl: "frontend/images/tel2.png"},
+            { name: "Tel Ürün Standı 3", imageUrl: "frontend/images/tel3.png"},
+            { name: "Tel Ürün Standı 4", imageUrl: "frontend/images/tel4.png"}
+        ]
+      };
+
+      // --- 2. ADIM: BU BÖLÜMÜ OLDUĞU GİBİ BIRAKIN ---
+      // Bu kısım, yukarıdaki ürünleri galerilere yerleştirecek.
+      document.addEventListener("DOMContentLoaded", function () {
+        const carouselsConfig = [
+          { carouselId: "myCarousel", categoryName: "Market Rafları", lightboxGalleryName: "market-gallery"},
+          { carouselId: "myCarousel2", categoryName: "Depo Rafları", lightboxGalleryName: "depo-gallery" },
+          { carouselId: "myCarousel3", categoryName: "Çelik Raflar", lightboxGalleryName: "celik-gallery" },
+          { carouselId: "myCarousel4", categoryName: "Duvara Monte Ekonomik Raflar", lightboxGalleryName: "eko-gallery" },
+          { carouselId: "myCarousel5", categoryName: "Ahşap Raflar", lightboxGalleryName: "ahsap-gallery" },
+          { carouselId: "myCarousel6", categoryName: "Giyim Rafları", lightboxGalleryName: "giyim-gallery" },
+          { carouselId: "myCarousel7", categoryName: "Mankenler", lightboxGalleryName: "manken-gallery" },
+          { carouselId: "myCarousel8", categoryName: "Orta Stantlar", lightboxGalleryName: "orta-gallery" },
+          { carouselId: "myCarousel9", categoryName: "Sepet Çeşitleri", lightboxGalleryName: "sepet-gallery" },
+          { carouselId: "myCarousel10", categoryName: "Tel Stantlar", lightboxGalleryName: "tel-gallery" },
+        ];
+
+        function populateCarousel(carouselId, categoryName, lightboxGallery) {
+          const carouselElement = document.getElementById(carouselId);
+          if (!carouselElement) return;
+
+          const carouselInner = carouselElement.querySelector(".carousel-inner");
+          const carouselIndicators = carouselElement.querySelector(".carousel-indicators");
+          if (!carouselInner || !carouselIndicators) return;
+
+          carouselInner.innerHTML = "";
+          carouselIndicators.innerHTML = "";
+          
+          const products = allProducts[categoryName] || [];
+
+          const carouselHeader = document.createElement("div");
+          carouselHeader.className = "carousel-item-header";
+          carouselHeader.textContent = categoryName;
+          carouselElement.prepend(carouselHeader);
+
+          if (products.length === 0) {
+            carouselInner.innerHTML = `<div class="carousel-item active"><div class="d-flex align-items-center justify-content-center h-100 p-5"><p class="text-center">Bu kategoride ürün bulunamadı.</p></div></div>`;
+            return;
+          }
+
+          products.forEach((product, index) => {
+            const carouselItemDiv = document.createElement("div");
+            carouselItemDiv.className = `carousel-item ${index === 0 ? "active" : ""}`;
+            
+            const productName = product.name || "Ürün";
+            const lightboxTitle = `${productName} - ${categoryName}`;
+
+            carouselItemDiv.innerHTML = `
+                <a href="${product.imageUrl}" data-lightbox="${lightboxGallery}" data-title="${lightboxTitle}">
+                    <img src="${product.imageUrl}" class="d-block w-100" alt="${productName}">
+                </a>`;
+            carouselInner.appendChild(carouselItemDiv);
+
+            const indicatorButton = document.createElement("button");
+            indicatorButton.type = "button";
+            indicatorButton.setAttribute("data-bs-target", `#${carouselId}`);
+            indicatorButton.setAttribute("data-bs-slide-to", index.toString());
+            if (index === 0) {
+              indicatorButton.classList.add("active");
+            }
+            carouselIndicators.appendChild(indicatorButton);
+          });
+        }
+
+        carouselsConfig.forEach(config => {
+          populateCarousel(config.carouselId, config.categoryName, config.lightboxGalleryName);
+        });
+      });
+    </script>
+</body>
 </html>
